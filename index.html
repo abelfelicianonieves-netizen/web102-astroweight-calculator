@@ -1,15 +1,216 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <title>Astro Weight Calculator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Astro Weight Calculator</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+
+    <style>
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #080c1c, #162d59, #080c1c);
+        }
+
+        /* Kakashi above the calculator */
+        .kakashi-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .kakashi-image {
+            width: 250px;
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 0 25px #00bfff);
+            transition: transform 0.3s;
+        }
+
+        .kakashi-image:hover {
+            transform: scale(1.08);
+        }
+
+        /* Naruto, calculator, and Sasuke */
+        .battle-layout {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            width: 100%;
+        }
+
+        .battle-character {
+            width: 250px;
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .naruto-image {
+            filter: drop-shadow(0 0 20px #ff9900);
+        }
+
+        .sasuke-image {
+            filter: drop-shadow(0 0 20px #00bfff);
+        }
+
+        /* Calculator */
+        .calculator-card {
+            width: 400px;
+            max-width: 100%;
+            flex-shrink: 0;
+            background: #172440;
+            border: 1px solid #3577bb;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 0 35px rgba(0, 180, 255, 0.3);
+        }
+
+        .calculator-card .title {
+            color: #ffd166;
+        }
+
+        .calculator-card .subtitle,
+        .calculator-card .label {
+            color: #ffffff;
+        }
+
+        #calculate-button {
+            background: linear-gradient(90deg, #0077ff, #00d4ff);
+            color: white;
+            border: none;
+            font-weight: bold;
+        }
+
+        #calculate-button:hover {
+            box-shadow: 0 0 20px #00d4ff;
+        }
+
+        #output {
+            color: #ffd166;
+            font-size: 20px;
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        /* Smaller screens */
+        @media (max-width: 1000px) {
+            .battle-layout {
+                flex-wrap: wrap;
+            }
+
+            .battle-character {
+                width: 180px;
+            }
+
+            .calculator-card {
+                flex-shrink: 1;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .battle-layout {
+                flex-direction: column;
+            }
+
+            .battle-character {
+                width: 200px;
+            }
+
+            .calculator-card {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <!-- Write your markup here  -->
 
-  <script src="main.js" charset="utf-8"></script>
+    <section class="section">
+
+        <div class="container is-fluid">
+
+            <!-- KAKASHI -->
+            <div class="kakashi-container">
+                <img
+                    src="kakashi.png"
+                    alt="Kakashi Hatake"
+                    class="kakashi-image"
+                >
+            </div>
+
+            <div class="battle-layout">
+
+                <!-- NARUTO: LEFT -->
+                <img
+                    src="naruto.png"
+                    alt="Naruto using Rasengan"
+                    class="battle-character naruto-image"
+                >
+
+                <!-- CALCULATOR: CENTER -->
+                <div class="box calculator-card">
+
+                    <h1 class="title has-text-centered">
+                        Astro Weight Calculator
+                    </h1>
+
+                    <p class="subtitle has-text-centered">
+                        Discover your weight across the universe!
+                    </p>
+
+                    <div class="field">
+                        <label class="label">Your Weight</label>
+                        <div class="control">
+                            <input
+                                id="user-weight"
+                                class="input is-large"
+                                type="text"
+                                placeholder="Weight (lbs)"
+                            >
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">Choose Your Planet</label>
+                        <div class="control">
+                            <div class="select is-large is-fullwidth">
+                                <select id="planets"></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button
+                        id="calculate-button"
+                        class="button is-primary is-large is-fullwidth"
+                        type="button">
+                        Calculate Weight
+                    </button>
+
+                    <p id="output">
+                        Output will appear here
+                    </p>
+
+                </div>
+
+                <!-- SASUKE: RIGHT -->
+                <img
+                    src="sasuke.png"
+                    alt="Sasuke using Chidori"
+                    class="battle-character sasuke-image"
+                >
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <script src="main.js" charset="utf-8"></script>
+
 </body>
-
 </html>
